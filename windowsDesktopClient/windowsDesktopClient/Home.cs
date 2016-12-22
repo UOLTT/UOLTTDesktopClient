@@ -22,8 +22,14 @@ namespace windowsDesktopClient
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            ShipPage ship = new ShipPage();
-            ship.Show();
+            if (panel1.Visible)
+            {
+                panel1.Hide();
+            }
+            else
+            {
+                panel1.Show();
+            }
         }
     }
 
