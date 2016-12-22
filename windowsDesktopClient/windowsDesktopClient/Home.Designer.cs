@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.shipButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Title = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.shipPanel = new System.Windows.Forms.Panel();
+            this.titleShip = new System.Windows.Forms.Label();
+            this.orgPanel = new System.Windows.Forms.Panel();
+            this.titleOrg = new System.Windows.Forms.Label();
             this.organisationButton = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.shipPanel.SuspendLayout();
+            this.orgPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // shipButton
@@ -48,39 +48,39 @@
             this.shipButton.UseVisualStyleBackColor = true;
             this.shipButton.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // panel1
+            // shipPanel
             // 
-            this.panel1.Controls.Add(this.Title);
-            this.panel1.Location = new System.Drawing.Point(76, 91);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(406, 245);
-            this.panel1.TabIndex = 1;
+            this.shipPanel.Controls.Add(this.titleShip);
+            this.shipPanel.Location = new System.Drawing.Point(76, 91);
+            this.shipPanel.Name = "shipPanel";
+            this.shipPanel.Size = new System.Drawing.Size(406, 245);
+            this.shipPanel.TabIndex = 1;
             // 
-            // Title
+            // titleShip
             // 
-            this.Title.AutoSize = true;
-            this.Title.Location = new System.Drawing.Point(13, 9);
-            this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(33, 13);
-            this.Title.TabIndex = 0;
-            this.Title.Text = "Ships";
+            this.titleShip.AutoSize = true;
+            this.titleShip.Location = new System.Drawing.Point(13, 9);
+            this.titleShip.Name = "titleShip";
+            this.titleShip.Size = new System.Drawing.Size(33, 13);
+            this.titleShip.TabIndex = 0;
+            this.titleShip.Text = "Ships";
             // 
-            // panel2
+            // orgPanel
             // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(319, 91);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(406, 245);
-            this.panel2.TabIndex = 3;
+            this.orgPanel.Controls.Add(this.titleOrg);
+            this.orgPanel.Location = new System.Drawing.Point(319, 91);
+            this.orgPanel.Name = "orgPanel";
+            this.orgPanel.Size = new System.Drawing.Size(406, 245);
+            this.orgPanel.TabIndex = 3;
             // 
-            // label2
+            // titleOrg
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(117, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.titleOrg.AutoSize = true;
+            this.titleOrg.Location = new System.Drawing.Point(14, 9);
+            this.titleOrg.Name = "titleOrg";
+            this.titleOrg.Size = new System.Drawing.Size(71, 13);
+            this.titleOrg.TabIndex = 0;
+            this.titleOrg.Text = "Organisations";
             // 
             // organisationButton
             // 
@@ -90,6 +90,7 @@
             this.organisationButton.TabIndex = 4;
             this.organisationButton.Text = "Orgs";
             this.organisationButton.UseVisualStyleBackColor = true;
+            this.organisationButton.Click += new System.EventHandler(this.OrganisationButton_Click);
             // 
             // Home
             // 
@@ -97,15 +98,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 487);
             this.Controls.Add(this.organisationButton);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.orgPanel);
+            this.Controls.Add(this.shipPanel);
             this.Controls.Add(this.shipButton);
             this.Name = "Home";
             this.Text = "UOLTT Desktop Client - Home";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.shipPanel.ResumeLayout(false);
+            this.shipPanel.PerformLayout();
+            this.orgPanel.ResumeLayout(false);
+            this.orgPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -113,10 +114,10 @@
         #endregion
 
         private System.Windows.Forms.Button shipButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label Title;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel shipPanel;
+        private System.Windows.Forms.Label titleShip;
+        private System.Windows.Forms.Panel orgPanel;
+        private System.Windows.Forms.Label titleOrg;
         private System.Windows.Forms.Button organisationButton;
     }
 }

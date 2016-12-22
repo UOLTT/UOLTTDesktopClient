@@ -15,26 +15,6 @@ namespace windowsDesktopClient
 {
     public partial class Home : Form
     {
-        public Home()
-        {
-            InitializeComponent();
-        }
-
-        private void Button1_Click(object sender, EventArgs e)
-        {
-            if (panel1.Visible)
-            {
-                panel1.Hide();
-            }
-            else
-            {
-                panel1.Show();
-            }
-        }
-    }
-
-    public partial class ShipPage : Form
-    {
         // Returns JSON string
         static string GET(string url)
         {
@@ -60,14 +40,21 @@ namespace windowsDesktopClient
                 throw;
             }
         }
-        public ShipPage()
+        public Home()
         {
-            var jsonRequest = GET("http://api.uoltt.org/api/v4/ships/1");
+            InitializeComponent();
+        }
 
-            Ship jsonObject = JsonConvert.DeserializeObject<Ship>(jsonRequest);
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            orgPanel.Hide();
+            shipPanel.Show();
+        }
 
-            var test = jsonObject.Price;
-            Text = jsonObject.ShipName;
+        private void OrganisationButton_Click(object sender, EventArgs e)
+        {
+            shipPanel.Hide();
+            orgPanel.Show();
         }
     }
 }
