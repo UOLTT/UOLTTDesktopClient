@@ -67,24 +67,21 @@ namespace windowsDesktopClient
         
         private void ShipButton_Click(object sender, EventArgs e)
         {
-            PanelChange(shipPanel);
             List<ShipExtended> listOfShips = JsonConvert.DeserializeObject<List<ShipExtended>>(GET(ApiCalls.ShipList));
             List<string> listOfShipNames = new List<string>();
             foreach (var item in listOfShips)
             {
-                ShipDropDown.Items.Add(item.ShipName);
+                ShipDropDown.Items.Add(item);
             }
-            var breakpoint = "";
+            ShipDropDown.DisplayMember = "ShipName";
         }
 
         private void OrgButton_Click(object sender, EventArgs e)
         {
-            PanelChange(orgPanel);
         }
 
         private void PriceButton_Click(object sender, EventArgs e)
         {
-            PanelChange(pricePanel);
         }
     }
 }
