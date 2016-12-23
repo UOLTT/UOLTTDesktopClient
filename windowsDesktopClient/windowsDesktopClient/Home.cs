@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace windowsDesktopClient
 {
+
     public partial class Home : Form
     {
 
@@ -63,10 +64,17 @@ namespace windowsDesktopClient
         {
             InitializeComponent();
         }
-
+        
         private void ShipButton_Click(object sender, EventArgs e)
         {
             PanelChange(shipPanel);
+            List<ShipExtended> listOfShips = JsonConvert.DeserializeObject<List<ShipExtended>>(GET(ApiCalls.ShipList));
+            List<string> listOfShipNames = new List<string>();
+            foreach (var item in listOfShips)
+            {
+                ShipDropDown.Items.Add(item.ShipName);
+            }
+            var breakpoint = "";
         }
 
         private void OrgButton_Click(object sender, EventArgs e)

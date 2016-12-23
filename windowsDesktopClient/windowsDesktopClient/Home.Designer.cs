@@ -37,9 +37,15 @@
             this.PriceButton = new System.Windows.Forms.Button();
             this.pricePanel = new System.Windows.Forms.Panel();
             this.titlePrice = new System.Windows.Forms.Label();
+            this.ShipDropDown = new System.Windows.Forms.ComboBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.shipPage = new System.Windows.Forms.TabPage();
+            this.orgPage = new System.Windows.Forms.TabPage();
+            this.pricePage = new System.Windows.Forms.TabPage();
             this.shipPanel.SuspendLayout();
             this.orgPanel.SuspendLayout();
             this.pricePanel.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // shipButton
@@ -54,6 +60,7 @@
             // 
             // shipPanel
             // 
+            this.shipPanel.Controls.Add(this.ShipDropDown);
             this.shipPanel.Controls.Add(this.titleShip);
             this.shipPanel.Location = new System.Drawing.Point(63, 91);
             this.shipPanel.Name = "shipPanel";
@@ -76,6 +83,7 @@
             this.orgPanel.Name = "orgPanel";
             this.orgPanel.Size = new System.Drawing.Size(597, 353);
             this.orgPanel.TabIndex = 1;
+            this.orgPanel.Visible = false;
             // 
             // titleOrg
             // 
@@ -113,6 +121,7 @@
             this.pricePanel.Name = "pricePanel";
             this.pricePanel.Size = new System.Drawing.Size(543, 353);
             this.pricePanel.TabIndex = 6;
+            this.pricePanel.Visible = false;
             // 
             // titlePrice
             // 
@@ -123,11 +132,61 @@
             this.titlePrice.TabIndex = 0;
             this.titlePrice.Text = "Prices";
             // 
+            // ShipDropDown
+            // 
+            this.ShipDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ShipDropDown.FormattingEnabled = true;
+            this.ShipDropDown.Location = new System.Drawing.Point(13, 45);
+            this.ShipDropDown.Name = "ShipDropDown";
+            this.ShipDropDown.Size = new System.Drawing.Size(121, 21);
+            this.ShipDropDown.TabIndex = 1;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.shipPage);
+            this.tabControl1.Controls.Add(this.orgPage);
+            this.tabControl1.Controls.Add(this.pricePage);
+            this.tabControl1.Location = new System.Drawing.Point(442, 32);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(200, 100);
+            this.tabControl1.TabIndex = 7;
+            // 
+            // shipPage
+            // 
+            this.shipPage.Location = new System.Drawing.Point(4, 22);
+            this.shipPage.Name = "shipPage";
+            this.shipPage.Padding = new System.Windows.Forms.Padding(3);
+            this.shipPage.Size = new System.Drawing.Size(192, 74);
+            this.shipPage.TabIndex = 0;
+            this.shipPage.Text = "Ships";
+            this.shipPage.UseVisualStyleBackColor = true;
+            // 
+            // orgPage
+            // 
+            this.orgPage.Location = new System.Drawing.Point(4, 22);
+            this.orgPage.Name = "orgPage";
+            this.orgPage.Padding = new System.Windows.Forms.Padding(3);
+            this.orgPage.Size = new System.Drawing.Size(192, 74);
+            this.orgPage.TabIndex = 1;
+            this.orgPage.Text = "Organisations";
+            this.orgPage.UseVisualStyleBackColor = true;
+            // 
+            // pricePage
+            // 
+            this.pricePage.Location = new System.Drawing.Point(4, 22);
+            this.pricePage.Name = "pricePage";
+            this.pricePage.Size = new System.Drawing.Size(192, 74);
+            this.pricePage.TabIndex = 2;
+            this.pricePage.Text = "Prices";
+            this.pricePage.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 487);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pricePanel);
             this.Controls.Add(this.orgButton);
             this.Controls.Add(this.orgPanel);
@@ -142,6 +201,7 @@
             this.orgPanel.PerformLayout();
             this.pricePanel.ResumeLayout(false);
             this.pricePanel.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -157,6 +217,11 @@
         private System.Windows.Forms.Button PriceButton;
         private System.Windows.Forms.Panel pricePanel;
         private System.Windows.Forms.Label titlePrice;
+        private System.Windows.Forms.ComboBox ShipDropDown;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage shipPage;
+        private System.Windows.Forms.TabPage orgPage;
+        private System.Windows.Forms.TabPage pricePage;
     }
 }
 

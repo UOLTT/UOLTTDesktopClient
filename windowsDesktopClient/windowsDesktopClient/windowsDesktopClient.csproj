@@ -48,7 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiCalls.cs" />
     <Compile Include="Classes\Organisation.cs" />
+    <Compile Include="Classes\ShipExtended.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
