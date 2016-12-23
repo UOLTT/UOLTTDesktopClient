@@ -15,7 +15,26 @@ namespace windowsDesktopClient
 {
     public partial class Home : Form
     {
-        // Returns JSON string
+
+        /// <summary>
+        /// Hides all panels and then shows panel passed in
+        /// </summary>
+        /// <param name="panel"> The Panel to be shown in the form </param>
+        private void PanelChange(Panel panel)
+        {
+
+            foreach (Panel p in this.Controls.OfType<Panel>())
+            {
+                p.Hide();
+            }
+            panel.Show();
+        }
+        
+        /// <summary>
+        /// Makes a JSON web request
+        /// </summary>
+        /// <param name="url">The URL to perform the web request on</param>
+        /// <returns>String containing the JSON response from the URL</returns>
         static string GET(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -45,16 +64,19 @@ namespace windowsDesktopClient
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void ShipButton_Click(object sender, EventArgs e)
         {
-            orgPanel.Hide();
-            shipPanel.Show();
+            PanelChange(shipPanel);
         }
 
-        private void OrganisationButton_Click(object sender, EventArgs e)
+        private void OrgButton_Click(object sender, EventArgs e)
         {
-            shipPanel.Hide();
-            orgPanel.Show();
+            PanelChange(orgPanel);
+        }
+
+        private void PriceButton_Click(object sender, EventArgs e)
+        {
+            PanelChange(pricePanel);
         }
     }
 }
