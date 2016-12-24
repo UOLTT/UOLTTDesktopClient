@@ -49,34 +49,31 @@ namespace windowsDesktopClient
         public Home()
         {
             InitializeComponent();
-        }
-        
-        private void ShipButton_Click(object sender, EventArgs e)
-        {
-            List<ShipExtended> listOfShips = JsonConvert.DeserializeObject<List<ShipExtended>>(GET(ApiCalls.ShipList));
+            List<Ship> listOfShips = JsonConvert.DeserializeObject<List<Ship>>(GET(ApiCalls.ShipList));
             foreach (var item in listOfShips)
             {
                 ShipDropDown.Items.Add(item);
             }
             ShipDropDown.DisplayMember = "ShipName";
         }
-
-        private void OrgButton_Click(object sender, EventArgs e)
+        
+        private void ShipButton_Click(object sender, EventArgs e)
         {
-        }
 
-        private void PriceButton_Click(object sender, EventArgs e)
-        {
         }
 
         private void ShipDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ShipExtended selected = (ShipExtended)ShipDropDown.SelectedItem;
-            textBox1.Text = Convert.ToString(selected.Id);
-            textBox2.Text = selected.ShipName;
-            textBox3.Text = Convert.ToString(selected.Height + "m");
-            textBox4.Text = Convert.ToString(selected.Length + "m");
-            textBox5.Text = Convert.ToString(selected.Beam + "m");
+            Ship selected = (Ship)ShipDropDown.SelectedItem;
+            ShipId.Text = Convert.ToString(selected.Id);
+            ShipName.Text = selected.ShipName;
+            ShipHeight.Text = Convert.ToString(selected.Height + "m");
+            ShipLength.Text = Convert.ToString(selected.Length + "m");
+            ShipBeam.Text = Convert.ToString(selected.Beam + "m");
+            ShipCargoCapacity.Text = Convert.ToString(selected.CargoCapacity);
+            ShipPowerPlant.Text = Convert.ToString(selected.PowerPlant);
+            ShipPowerCount.Text = Convert.ToString(selected.PowerCount);
+            ShipClass.Text = selected.Class;
         }
     }
 }
