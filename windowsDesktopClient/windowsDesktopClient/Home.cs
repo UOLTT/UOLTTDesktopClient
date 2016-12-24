@@ -16,20 +16,6 @@ namespace windowsDesktopClient
 
     public partial class Home : Form
     {
-
-        /// <summary>
-        /// Hides all panels and then shows panel passed in
-        /// </summary>
-        /// <param name="panel"> The Panel to be shown in the form </param>
-        private void PanelChange(Panel panel)
-        {
-
-            foreach (Panel p in this.Controls.OfType<Panel>())
-            {
-                p.Hide();
-            }
-            panel.Show();
-        }
         
         /// <summary>
         /// Makes a JSON web request
@@ -68,7 +54,6 @@ namespace windowsDesktopClient
         private void ShipButton_Click(object sender, EventArgs e)
         {
             List<ShipExtended> listOfShips = JsonConvert.DeserializeObject<List<ShipExtended>>(GET(ApiCalls.ShipList));
-            List<string> listOfShipNames = new List<string>();
             foreach (var item in listOfShips)
             {
                 ShipDropDown.Items.Add(item);
@@ -82,6 +67,16 @@ namespace windowsDesktopClient
 
         private void PriceButton_Click(object sender, EventArgs e)
         {
+        }
+
+        private void ShipDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ShipExtended selected = (ShipExtended)ShipDropDown.SelectedItem;
+            textBox1.Text = Convert.ToString(selected.Id);
+            textBox2.Text = selected.ShipName;
+            textBox3.Text = Convert.ToString(selected.Height + "m");
+            textBox4.Text = Convert.ToString(selected.Length + "m");
+            textBox5.Text = Convert.ToString(selected.Beam + "m");
         }
     }
 }
