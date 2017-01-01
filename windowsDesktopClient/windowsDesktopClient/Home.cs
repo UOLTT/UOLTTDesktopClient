@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using windowsDesktopClient.Classes;
 
 namespace windowsDesktopClient
 {
@@ -55,25 +56,41 @@ namespace windowsDesktopClient
                 ShipDropDown.Items.Add(item);
             }
             ShipDropDown.DisplayMember = "ShipName";
+
+            List<Organisation> listOfOrgs = JsonConvert.DeserializeObject<List<Organisation>>(GET(ApiCalls.OrgList));
+            foreach (var item in listOfOrgs)
+            {
+                OrgDropDown.Items.Add(item);
+            }
+            OrgDropDown.DisplayMember = "Name";
         }
         
         private void ShipButton_Click(object sender, EventArgs e)
         {
-
         }
 
         private void ShipDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             Ship selected = (Ship)ShipDropDown.SelectedItem;
             ShipId.Text = Convert.ToString(selected.Id);
-            ShipName.Text = selected.ShipName;
+            ShipName.Text = Convert.ToString(selected.ShipName);
             ShipHeight.Text = Convert.ToString(selected.Height + "m");
             ShipLength.Text = Convert.ToString(selected.Length + "m");
             ShipBeam.Text = Convert.ToString(selected.Beam + "m");
             ShipCargoCapacity.Text = Convert.ToString(selected.CargoCapacity);
             ShipPowerPlant.Text = Convert.ToString(selected.PowerPlant);
             ShipPowerCount.Text = Convert.ToString(selected.PowerCount);
-            ShipClass.Text = selected.Class;
+            ShipClass.Text = Convert.ToString(selected.Class);
+        }
+
+        private void OrgDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Organisation selected = (Organisation)OrgDropDown.SelectedItem;
+            OrgId.Text = Convert.ToString(selected.Id);
+            OrgAdminUserId.Text = Convert.ToString(selected.AdminUserId);
+            OrgStatusId.Text = Convert.ToString(selected.StatusId);
+            OrgUserCount.Text = Convert.ToString(selected.UserCount);
+            OrgDomain.Text = Convert.ToString(selected.Domain);
         }
     }
 }
