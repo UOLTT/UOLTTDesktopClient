@@ -63,6 +63,7 @@ namespace windowsDesktopClient
                 OrgDropDown.Items.Add(item);
             }
             OrgDropDown.DisplayMember = "Name";
+            Ship testShip = JsonConvert.DeserializeObject<Ship>(GET(ApiCalls.ShipIndividual + "69"));
         }
         
         private void ShipButton_Click(object sender, EventArgs e)

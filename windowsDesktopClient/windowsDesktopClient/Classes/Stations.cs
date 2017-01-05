@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace windowsDesktopClient.Classes
 {
-    public class User
+    public class Stations
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int? OrganisationId { get; set; }
-        public int? FleedId { get; set; }
-        public int? SquadId { get; set; }
-        public int? StationId { get; set; }
-        public int? ActiveShip { get; set; }
+        public string Description { get; set; }
     }
 }

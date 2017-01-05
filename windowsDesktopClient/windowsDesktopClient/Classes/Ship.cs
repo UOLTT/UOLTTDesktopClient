@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windowsDesktopClient
+namespace windowsDesktopClient.Classes
 {
     /// <summary>
     /// Extended version of the Ship class used for the ship list
@@ -33,7 +33,7 @@ namespace windowsDesktopClient
         public int? CombatSpeed { get; set; }
         public int? CombatRating { get; set; }
         public int? WaveRank { get; set; }
-        public string CreatedAt { get; set; }
-        public string UpdatedAt { get; set; }
+        public List<Stations> Stations { get; set; }
+        public List<User> Users { get; set; }
     }
 }
