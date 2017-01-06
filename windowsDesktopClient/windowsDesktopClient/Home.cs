@@ -15,7 +15,7 @@ using windowsDesktopClient.Classes;
 
 namespace windowsDesktopClient
 {
-    static class Global
+    internal static class Global
     {
         private static List<Ship> _listOfShips = new List<Ship>();
         private static List<Organization> _listOfOrgs = new List<Organization>();
