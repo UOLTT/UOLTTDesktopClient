@@ -15,6 +15,30 @@ using windowsDesktopClient.Classes;
 
 namespace windowsDesktopClient
 {
+    static class Global
+    {
+        private static List<Ship> _listOfShips = new List<Ship>();
+        private static List<Organization> _listOfOrgs = new List<Organization>();
+        private static List<User> _listOfUsers = new List<User>();
+
+        public static List<Ship> listOfShips
+        {
+            get { return _listOfShips; }
+            set { _listOfShips = value; }
+        }
+
+        public static List<Organization> listOfOrgs
+        {
+            get { return _listOfOrgs; }
+            set { _listOfOrgs = value; }
+        }
+
+        public static List<User> listOfUsers
+        { 
+            get { return _listOfUsers; }
+            set { _listOfUsers = value; }
+        }
+    }
 
     public partial class Home : Form
     {
@@ -58,31 +82,37 @@ namespace windowsDesktopClient
         public Home()
         {
             InitializeComponent();
-            List<Ship> listOfShips = JsonConvert.DeserializeObject<List<Ship>>(GET(ApiCalls.ShipList));
-            foreach (var item in listOfShips)
+            PopulateLists();
+        }
+        
+        protected void PopulateLists()
+        {
+            Global.listOfShips = JsonConvert.DeserializeObject<List<Ship>>(GET(ApiCalls.ShipList));
+            foreach (var item in Global.listOfShips)
             {
                 ShipDropDown.Items.Add(item);
             }
             ShipDropDown.DisplayMember = "ShipName";
 
             string jsonRaw = GET(ApiCalls.OrgList);
-            List<Organisation> listOfOrgs = JsonConvert.DeserializeObject<List<Organisation>>(jsonRaw);
-            foreach (var item in listOfOrgs)
+            Global.listOfOrgs = JsonConvert.DeserializeObject<List<Organization>>(jsonRaw);
+            foreach (var item in Global.listOfOrgs)
             {
                 OrgDropDown.Items.Add(item);
             }
             OrgDropDown.DisplayMember = "Name";
             Ship testShip = JsonConvert.DeserializeObject<Ship>(GET(ApiCalls.ShipIndividual + "69"));
-            User testUser = JsonConvert.DeserializeObject<User>(GET(ApiCalls.UserIndividual + "2384"));
+            string json = GET(ApiCalls.UserIndividual + "2384");
+            User testUser = JsonConvert.DeserializeObject<User>(json);
             foreach (var ship in testUser.Ships)
             {
                 var banana = ship.ShipName;
             }
         }
-        
+
         private void ShipButton_Click(object sender, EventArgs e)
         {
-            
+            PopulateLists();
         }
 
         private void ShipDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,7 +131,7 @@ namespace windowsDesktopClient
 
         private void OrgDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Organisation selected = (Organisation)OrgDropDown.SelectedItem;
+            Organization selected = (Organization)OrgDropDown.SelectedItem;
             OrgId.Text = Convert.ToString(selected.Id);
             OrgAdminUserId.Text = Convert.ToString(selected.Admin_User_Id);
             OrgStatusId.Text = Convert.ToString(selected.Status_Id);

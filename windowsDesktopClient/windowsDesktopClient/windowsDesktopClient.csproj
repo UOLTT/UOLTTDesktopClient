@@ -49,13 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiCalls.cs" />
-    <Compile Include="Classes\Organisation.cs" />
+    <Compile Include="Classes\Organization.cs" />
     <Compile Include="Classes\Ship.cs" />
     <Compile Include="Classes\Stations.cs" />
     <Compile Include="Classes\User.cs" />
-    <Compile Include="Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Home.cs" />
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>

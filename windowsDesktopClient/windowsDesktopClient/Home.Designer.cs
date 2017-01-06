@@ -51,6 +51,8 @@
             this.ShipId = new System.Windows.Forms.TextBox();
             this.ShipDropDown = new System.Windows.Forms.ComboBox();
             this.orgPage = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.OrgAdminUser = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -63,8 +65,7 @@
             this.OrgId = new System.Windows.Forms.TextBox();
             this.OrgDropDown = new System.Windows.Forms.ComboBox();
             this.pricePage = new System.Windows.Forms.TabPage();
-            this.label15 = new System.Windows.Forms.Label();
-            this.OrgAdminUser = new System.Windows.Forms.TextBox();
+            this.userPage = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.shipPage.SuspendLayout();
             this.orgPage.SuspendLayout();
@@ -85,6 +86,7 @@
             this.tabControl1.Controls.Add(this.shipPage);
             this.tabControl1.Controls.Add(this.orgPage);
             this.tabControl1.Controls.Add(this.pricePage);
+            this.tabControl1.Controls.Add(this.userPage);
             this.tabControl1.Location = new System.Drawing.Point(104, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -297,6 +299,22 @@
             this.orgPage.Text = "Organisations";
             this.orgPage.UseVisualStyleBackColor = true;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(218, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Org Admin";
+            // 
+            // OrgAdminUser
+            // 
+            this.OrgAdminUser.Location = new System.Drawing.Point(221, 68);
+            this.OrgAdminUser.Name = "OrgAdminUser";
+            this.OrgAdminUser.Size = new System.Drawing.Size(100, 20);
+            this.OrgAdminUser.TabIndex = 23;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -396,21 +414,14 @@
             this.pricePage.Text = "Prices";
             this.pricePage.UseVisualStyleBackColor = true;
             // 
-            // label15
+            // userPage
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(218, 47);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 13);
-            this.label15.TabIndex = 24;
-            this.label15.Text = "Org Admin";
-            // 
-            // OrgAdminUser
-            // 
-            this.OrgAdminUser.Location = new System.Drawing.Point(221, 68);
-            this.OrgAdminUser.Name = "OrgAdminUser";
-            this.OrgAdminUser.Size = new System.Drawing.Size(100, 20);
-            this.OrgAdminUser.TabIndex = 23;
+            this.userPage.Location = new System.Drawing.Point(4, 22);
+            this.userPage.Name = "userPage";
+            this.userPage.Size = new System.Drawing.Size(673, 437);
+            this.userPage.TabIndex = 3;
+            this.userPage.Text = "Users";
+            this.userPage.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
@@ -469,6 +480,7 @@
         private System.Windows.Forms.TextBox OrgId;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox OrgAdminUser;
+        private System.Windows.Forms.TabPage userPage;
     }
 }
 

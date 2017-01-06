@@ -12,12 +12,12 @@ namespace windowsDesktopClient.Classes
         public string Name { get; set; }
         public string UserName { get; set; }
         public string Game_Handle { get; set; }
-        public int? Organisation_Id { get; set; }
-        public int? Fleed_Id { get; set; }
+        public int? Organization_Id { get; set; }
+        public int? Fleet_Id { get; set; }
         public int? Squad_Id { get; set; }
         public int? Station_Id { get; set; }
         public int? Active_Ship { get; set; }
-        public List<Organisation> Organisation { get; set; }
+        public Organization Organization { get; set; }
         public string Fleet { get; set; }
         public string Squad { get; set; }
         public List<Ship> Ships { get; set; }
