@@ -16,6 +16,7 @@ namespace windowsDesktopClient
             ShipIndividual = "http://api.uoltt.org/api/v4/ships/",
             OrgList = "http://api.uoltt.org/api/v4/organizations",
             OrgIndividual = "http://api.uoltt.org/api/v4/organizations/",
-            UserList = "http://api.uoltt.org/api/v4/users";
+            UserList = "http://api.uoltt.org/api/v4/users",
+            UserIndividual = "http://api.uoltt.org/api/v4/users/";
     }
 }

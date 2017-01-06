@@ -10,10 +10,16 @@ namespace windowsDesktopClient.Classes
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int? OrganisationId { get; set; }
-        public int? FleedId { get; set; }
-        public int? SquadId { get; set; }
-        public int? StationId { get; set; }
-        public int? ActiveShip { get; set; }
+        public string UserName { get; set; }
+        public string Game_Handle { get; set; }
+        public int? Organisation_Id { get; set; }
+        public int? Fleed_Id { get; set; }
+        public int? Squad_Id { get; set; }
+        public int? Station_Id { get; set; }
+        public int? Active_Ship { get; set; }
+        public List<Organisation> Organisation { get; set; }
+        public string Fleet { get; set; }
+        public string Squad { get; set; }
+        public List<Ship> Ships { get; set; }
     }
 }

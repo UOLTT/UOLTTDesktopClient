@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using windowsDesktopClient.Classes;
 
@@ -44,6 +45,13 @@ namespace windowsDesktopClient
                     String errorText = reader.ReadToEnd();
                     // log errorText
                 }
+
+                string messageBoxText = "There Was an Error";
+                string caption = "UOLTT Desktop Application";
+                MessageBoxButtons button = MessageBoxButtons.OK;
+
+                MessageBox.Show(messageBoxText, caption, button);
+
                 throw;
             }
         }
@@ -57,17 +65,24 @@ namespace windowsDesktopClient
             }
             ShipDropDown.DisplayMember = "ShipName";
 
-            List<Organisation> listOfOrgs = JsonConvert.DeserializeObject<List<Organisation>>(GET(ApiCalls.OrgList));
+            string jsonRaw = GET(ApiCalls.OrgList);
+            List<Organisation> listOfOrgs = JsonConvert.DeserializeObject<List<Organisation>>(jsonRaw);
             foreach (var item in listOfOrgs)
             {
                 OrgDropDown.Items.Add(item);
             }
             OrgDropDown.DisplayMember = "Name";
             Ship testShip = JsonConvert.DeserializeObject<Ship>(GET(ApiCalls.ShipIndividual + "69"));
+            User testUser = JsonConvert.DeserializeObject<User>(GET(ApiCalls.UserIndividual + "2384"));
+            foreach (var ship in testUser.Ships)
+            {
+                var banana = ship.ShipName;
+            }
         }
         
         private void ShipButton_Click(object sender, EventArgs e)
         {
+            
         }
 
         private void ShipDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,10 +103,24 @@ namespace windowsDesktopClient
         {
             Organisation selected = (Organisation)OrgDropDown.SelectedItem;
             OrgId.Text = Convert.ToString(selected.Id);
-            OrgAdminUserId.Text = Convert.ToString(selected.AdminUserId);
-            OrgStatusId.Text = Convert.ToString(selected.StatusId);
-            OrgUserCount.Text = Convert.ToString(selected.UserCount);
+            OrgAdminUserId.Text = Convert.ToString(selected.Admin_User_Id);
+            OrgStatusId.Text = Convert.ToString(selected.Status_Id);
+            OrgUserCount.Text = Convert.ToString(selected.User_Count);
             OrgDomain.Text = Convert.ToString(selected.Domain);
+            try
+            {
+                string jsonUserRaw = GET(ApiCalls.UserIndividual + Convert.ToString(selected.Admin_User_Id));
+                User adminUser = JsonConvert.DeserializeObject<User>(jsonUserRaw);
+                OrgAdminUser.Text = adminUser.UserName;
+            }
+            catch (WebException)
+            {
+                string messageBoxText = "Error fetching data from database";
+                string caption = "UOLTT Desktop Application";
+                MessageBoxButtons button = MessageBoxButtons.RetryCancel;
+
+                MessageBox.Show(messageBoxText, caption, button);
+            }
         }
     }
 }

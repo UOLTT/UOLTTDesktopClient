@@ -51,8 +51,6 @@
             this.ShipId = new System.Windows.Forms.TextBox();
             this.ShipDropDown = new System.Windows.Forms.ComboBox();
             this.orgPage = new System.Windows.Forms.TabPage();
-            this.pricePage = new System.Windows.Forms.TabPage();
-            this.OrgDropDown = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -63,6 +61,10 @@
             this.OrgStatusId = new System.Windows.Forms.TextBox();
             this.OrgAdminUserId = new System.Windows.Forms.TextBox();
             this.OrgId = new System.Windows.Forms.TextBox();
+            this.OrgDropDown = new System.Windows.Forms.ComboBox();
+            this.pricePage = new System.Windows.Forms.TabPage();
+            this.label15 = new System.Windows.Forms.Label();
+            this.OrgAdminUser = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.shipPage.SuspendLayout();
             this.orgPage.SuspendLayout();
@@ -268,12 +270,14 @@
             this.ShipDropDown.FormattingEnabled = true;
             this.ShipDropDown.Location = new System.Drawing.Point(6, 6);
             this.ShipDropDown.Name = "ShipDropDown";
-            this.ShipDropDown.Size = new System.Drawing.Size(121, 21);
+            this.ShipDropDown.Size = new System.Drawing.Size(174, 21);
             this.ShipDropDown.TabIndex = 2;
             this.ShipDropDown.SelectedIndexChanged += new System.EventHandler(this.ShipDropDown_SelectedIndexChanged);
             // 
             // orgPage
             // 
+            this.orgPage.Controls.Add(this.label15);
+            this.orgPage.Controls.Add(this.OrgAdminUser);
             this.orgPage.Controls.Add(this.label10);
             this.orgPage.Controls.Add(this.label11);
             this.orgPage.Controls.Add(this.label12);
@@ -292,25 +296,6 @@
             this.orgPage.TabIndex = 1;
             this.orgPage.Text = "Organisations";
             this.orgPage.UseVisualStyleBackColor = true;
-            // 
-            // pricePage
-            // 
-            this.pricePage.Location = new System.Drawing.Point(4, 22);
-            this.pricePage.Name = "pricePage";
-            this.pricePage.Size = new System.Drawing.Size(673, 437);
-            this.pricePage.TabIndex = 2;
-            this.pricePage.Text = "Prices";
-            this.pricePage.UseVisualStyleBackColor = true;
-            // 
-            // OrgDropDown
-            // 
-            this.OrgDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.OrgDropDown.FormattingEnabled = true;
-            this.OrgDropDown.Location = new System.Drawing.Point(6, 6);
-            this.OrgDropDown.Name = "OrgDropDown";
-            this.OrgDropDown.Size = new System.Drawing.Size(121, 21);
-            this.OrgDropDown.TabIndex = 3;
-            this.OrgDropDown.SelectedIndexChanged += new System.EventHandler(this.OrgDropDown_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -361,7 +346,7 @@
             // 
             this.OrgDomain.Location = new System.Drawing.Point(218, 107);
             this.OrgDomain.Name = "OrgDomain";
-            this.OrgDomain.Size = new System.Drawing.Size(100, 20);
+            this.OrgDomain.Size = new System.Drawing.Size(124, 20);
             this.OrgDomain.TabIndex = 17;
             // 
             // OrgUserCount
@@ -391,6 +376,41 @@
             this.OrgId.Name = "OrgId";
             this.OrgId.Size = new System.Drawing.Size(100, 20);
             this.OrgId.TabIndex = 13;
+            // 
+            // OrgDropDown
+            // 
+            this.OrgDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OrgDropDown.FormattingEnabled = true;
+            this.OrgDropDown.Location = new System.Drawing.Point(6, 6);
+            this.OrgDropDown.Name = "OrgDropDown";
+            this.OrgDropDown.Size = new System.Drawing.Size(206, 21);
+            this.OrgDropDown.TabIndex = 3;
+            this.OrgDropDown.SelectedIndexChanged += new System.EventHandler(this.OrgDropDown_SelectedIndexChanged);
+            // 
+            // pricePage
+            // 
+            this.pricePage.Location = new System.Drawing.Point(4, 22);
+            this.pricePage.Name = "pricePage";
+            this.pricePage.Size = new System.Drawing.Size(673, 437);
+            this.pricePage.TabIndex = 2;
+            this.pricePage.Text = "Prices";
+            this.pricePage.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(218, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Org Admin";
+            // 
+            // OrgAdminUser
+            // 
+            this.OrgAdminUser.Location = new System.Drawing.Point(221, 68);
+            this.OrgAdminUser.Name = "OrgAdminUser";
+            this.OrgAdminUser.Size = new System.Drawing.Size(100, 20);
+            this.OrgAdminUser.TabIndex = 23;
             // 
             // Home
             // 
@@ -447,6 +467,8 @@
         private System.Windows.Forms.TextBox OrgStatusId;
         private System.Windows.Forms.TextBox OrgAdminUserId;
         private System.Windows.Forms.TextBox OrgId;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox OrgAdminUser;
     }
 }
 
