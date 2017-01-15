@@ -1,45 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 using windowsDesktopClient.Classes;
 
 namespace windowsDesktopClient
 {
-    internal static class Global
-    {
-        private static List<Ship> _listOfShips = new List<Ship>();
-        private static List<Organization> _listOfOrgs = new List<Organization>();
-        private static List<User> _listOfUsers = new List<User>();
-
-        public static List<Ship> listOfShips
-        {
-            get { return _listOfShips; }
-            set { _listOfShips = value; }
-        }
-
-        public static List<Organization> listOfOrgs
-        {
-            get { return _listOfOrgs; }
-            set { _listOfOrgs = value; }
-        }
-
-        public static List<User> listOfUsers
-        { 
-            get { return _listOfUsers; }
-            set { _listOfUsers = value; }
-        }
-    }
-
     public partial class Home : Form
     {
         
@@ -48,7 +17,7 @@ namespace windowsDesktopClient
         /// </summary>
         /// <param name="url">The URL to perform the web request on</param>
         /// <returns>String containing the JSON response from the URL</returns>
-        static string GET(string url)
+        private static string GET(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             try
@@ -87,27 +56,29 @@ namespace windowsDesktopClient
         
         protected void PopulateLists()
         {
-            Global.listOfShips = JsonConvert.DeserializeObject<List<Ship>>(GET(ApiCalls.ShipList));
+            string shipListJson = GET(ApiCalls.ShipList);
+            Global.listOfShips = JsonConvert.DeserializeObject<List<Ship>>(shipListJson);
             foreach (var item in Global.listOfShips)
             {
                 ShipDropDown.Items.Add(item);
             }
             ShipDropDown.DisplayMember = "ShipName";
 
-            string jsonRaw = GET(ApiCalls.OrgList);
-            Global.listOfOrgs = JsonConvert.DeserializeObject<List<Organization>>(jsonRaw);
+            string orgListJson = GET(ApiCalls.OrgList);
+            Global.listOfOrgs = JsonConvert.DeserializeObject<List<Organization>>(orgListJson);
             foreach (var item in Global.listOfOrgs)
             {
                 OrgDropDown.Items.Add(item);
             }
             OrgDropDown.DisplayMember = "Name";
-            Ship testShip = JsonConvert.DeserializeObject<Ship>(GET(ApiCalls.ShipIndividual + "69"));
-            string json = GET(ApiCalls.UserIndividual + "2384");
-            User testUser = JsonConvert.DeserializeObject<User>(json);
-            foreach (var ship in testUser.Ships)
-            {
-                var banana = ship.ShipName;
-            }
+
+            string userListJson = GET(ApiCalls.UserList);
+            Global.listOfUsers = JsonConvert.DeserializeObject<List<User>>(userListJson);
+            //foreach (var item in Global.listOfUsers)
+            //{
+            //    UserDropDown.Items.Add(item);
+            //}
+            //UserDropDown.DisplayMember = "UserName";
         }
 
         private void ShipButton_Click(object sender, EventArgs e)
@@ -151,6 +122,34 @@ namespace windowsDesktopClient
 
                 MessageBox.Show(messageBoxText, caption, button);
             }
+        }
+    }
+
+    /// <summary>
+    /// Internally shared variables able to be populated elsewhere
+    /// </summary>
+    internal static class Global
+    {
+        private static List<Ship> _listOfShips = new List<Ship>();
+        private static List<Organization> _listOfOrgs = new List<Organization>();
+        private static List<User> _listOfUsers = new List<User>();
+
+        internal static List<Ship> listOfShips
+        {
+            get { return _listOfShips; }
+            set { _listOfShips = value; }
+        }
+
+        internal static List<Organization> listOfOrgs
+        {
+            get { return _listOfOrgs; }
+            set { _listOfOrgs = value; }
+        }
+
+        internal static List<User> listOfUsers
+        {
+            get { return _listOfUsers; }
+            set { _listOfUsers = value; }
         }
     }
 }

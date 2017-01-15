@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace windowsDesktopClient.Classes
 {
-    public class Organization
+    internal class Organization
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace windowsDesktopClient.Classes
 {
     /// <summary>
-    /// Extended version of the Ship class used for the ship list
+    /// Ship Class used for deserialising Json string
     /// </summary>
-    public class Ship
+    internal class Ship
     {
         public int Id { get; set; }
         public string ShipName { get; set; }
