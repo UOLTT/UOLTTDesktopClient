@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using windowsDesktopClient.Classes;
+using DataDelivery;
 
 namespace windowsDesktopClient
 {
@@ -56,7 +57,8 @@ namespace windowsDesktopClient
         
         protected void PopulateLists()
         {
-            string shipListJson = GET(ApiCalls.ShipList);
+
+            string shipListJson = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.ListOfShips));
             Global.listOfShips = JsonConvert.DeserializeObject<List<Ship>>(shipListJson);
             foreach (var item in Global.listOfShips)
             {
@@ -64,7 +66,7 @@ namespace windowsDesktopClient
             }
             ShipDropDown.DisplayMember = "ShipName";
 
-            string orgListJson = GET(ApiCalls.OrgList);
+            string orgListJson = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.ListOfOrgs));
             Global.listOfOrgs = JsonConvert.DeserializeObject<List<Organization>>(orgListJson);
             foreach (var item in Global.listOfOrgs)
             {
@@ -72,13 +74,8 @@ namespace windowsDesktopClient
             }
             OrgDropDown.DisplayMember = "Name";
 
-            string userListJson = GET(ApiCalls.UserList);
+            string userListJson = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.ListOfUsers));
             Global.listOfUsers = JsonConvert.DeserializeObject<List<User>>(userListJson);
-            //foreach (var item in Global.listOfUsers)
-            //{
-            //    UserDropDown.Items.Add(item);
-            //}
-            //UserDropDown.DisplayMember = "UserName";
         }
 
         private void ShipButton_Click(object sender, EventArgs e)
@@ -110,7 +107,6 @@ namespace windowsDesktopClient
             OrgDomain.Text = Convert.ToString(selected.Domain);
             try
             {
-                string jsonUserRaw = GET(ApiCalls.UserIndividual + Convert.ToString(selected.Admin_User_Id));
                 User adminUser = JsonConvert.DeserializeObject<User>(jsonUserRaw);
                 OrgAdminUser.Text = adminUser.UserName;
             }
