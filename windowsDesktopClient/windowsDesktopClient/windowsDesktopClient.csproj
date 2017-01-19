@@ -48,11 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiCalls.cs" />
-    <Compile Include="Classes\Organization.cs" />
-    <Compile Include="Classes\Ship.cs" />
-    <Compile Include="Classes\Stations.cs" />
-    <Compile Include="Classes\User.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataDelivery\DataDelivery.csproj">
+      <Project>{e2c8c01c-5289-4a6b-aad5-e72597d06af2}</Project>
+      <Name>DataDelivery</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

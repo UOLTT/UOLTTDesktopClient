@@ -107,6 +107,7 @@ namespace windowsDesktopClient
             OrgDomain.Text = Convert.ToString(selected.Domain);
             try
             {
+                string jsonUserRaw = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.IndividualUser, selected.Admin_User_Id));
                 User adminUser = JsonConvert.DeserializeObject<User>(jsonUserRaw);
                 OrgAdminUser.Text = adminUser.UserName;
             }
