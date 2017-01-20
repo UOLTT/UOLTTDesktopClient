@@ -5,7 +5,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using windowsDesktopClient.Classes;
+using DataDelivery.Classes;
 using DataDelivery;
 
 namespace windowsDesktopClient

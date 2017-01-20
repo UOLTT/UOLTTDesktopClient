@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace windowsDesktopClient.Classes
+namespace DataDelivery.Classes
 {
     /// <summary>
     /// Ship Class used for deserialising Json string
