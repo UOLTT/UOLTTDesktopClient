@@ -13,42 +13,6 @@ namespace windowsDesktopClient
     public partial class Home : Form
     {
         
-        /// <summary>
-        /// Makes a JSON web request
-        /// </summary>
-        /// <param name="url">The URL to perform the web request on</param>
-        /// <returns>String containing the JSON response from the URL</returns>
-        private static string GET(string url)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            try
-            {
-                WebResponse response = request.GetResponse();
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    return reader.ReadToEnd();
-                }
-            }
-            catch (WebException ex)
-            {
-                WebResponse errorResponse = ex.Response;
-                using (Stream responseStream = errorResponse.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.GetEncoding("utf-8"));
-                    String errorText = reader.ReadToEnd();
-                    // log errorText
-                }
-
-                string messageBoxText = "There Was an Error";
-                string caption = "UOLTT Desktop Application";
-                MessageBoxButtons button = MessageBoxButtons.OK;
-
-                MessageBox.Show(messageBoxText, caption, button);
-
-                throw;
-            }
-        }
         public Home()
         {
             InitializeComponent();
@@ -58,7 +22,7 @@ namespace windowsDesktopClient
         protected void PopulateLists()
         {
 
-            string shipListJson = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.ListOfShips));
+            string shipListJson = Common.LoadData(GetCalls.ListOfShips);
             Global.listOfShips = JsonConvert.DeserializeObject<List<Ship>>(shipListJson);
             foreach (var item in Global.listOfShips)
             {
@@ -66,7 +30,7 @@ namespace windowsDesktopClient
             }
             ShipDropDown.DisplayMember = "ShipName";
 
-            string orgListJson = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.ListOfOrgs));
+            string orgListJson = Common.LoadData(GetCalls.ListOfOrgs);
             Global.listOfOrgs = JsonConvert.DeserializeObject<List<Organization>>(orgListJson);
             foreach (var item in Global.listOfOrgs)
             {
@@ -74,7 +38,7 @@ namespace windowsDesktopClient
             }
             OrgDropDown.DisplayMember = "Name";
 
-            string userListJson = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.ListOfUsers));
+            string userListJson = Common.LoadData(GetCalls.ListOfUsers);
             Global.listOfUsers = JsonConvert.DeserializeObject<List<User>>(userListJson);
         }
 
@@ -107,7 +71,7 @@ namespace windowsDesktopClient
             OrgDomain.Text = Convert.ToString(selected.Domain);
             try
             {
-                string jsonUserRaw = GET(GetDataRequests.RetrieveGETStringRequest(GetCalls.IndividualUser, selected.Admin_User_Id));
+                string jsonUserRaw = Common.LoadData(GetCalls.IndividualUser, selected.Admin_User_Id);
                 User adminUser = JsonConvert.DeserializeObject<User>(jsonUserRaw);
                 OrgAdminUser.Text = adminUser.UserName;
             }
