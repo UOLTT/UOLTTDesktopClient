@@ -22,24 +22,21 @@ namespace windowsDesktopClient
         protected void PopulateLists()
         {
 
-            string shipListJson = Common.LoadData(GetCalls.ListOfShips);
-            Global.listOfShips = JsonConvert.DeserializeObject<List<Ship>>(shipListJson);
+            Global.listOfShips = Common.LoadData<List<Ship>>(GetCalls.ListOfShips);
             foreach (var item in Global.listOfShips)
             {
                 ShipDropDown.Items.Add(item);
             }
             ShipDropDown.DisplayMember = "ShipName";
 
-            string orgListJson = Common.LoadData(GetCalls.ListOfOrgs);
-            Global.listOfOrgs = JsonConvert.DeserializeObject<List<Organization>>(orgListJson);
+            Global.listOfOrgs = Common.LoadData<List<Organization>>(GetCalls.ListOfOrgs);
             foreach (var item in Global.listOfOrgs)
             {
                 OrgDropDown.Items.Add(item);
             }
             OrgDropDown.DisplayMember = "Name";
 
-            string userListJson = Common.LoadData(GetCalls.ListOfUsers);
-            Global.listOfUsers = JsonConvert.DeserializeObject<List<User>>(userListJson);
+            Global.listOfUsers = Common.LoadData<List<User>>(GetCalls.ListOfUsers);
         }
 
         private void ShipButton_Click(object sender, EventArgs e)
@@ -59,6 +56,15 @@ namespace windowsDesktopClient
             ShipPowerPlant.Text = Convert.ToString(selected.PowerPlant);
             ShipPowerCount.Text = Convert.ToString(selected.PowerCount);
             ShipClass.Text = Convert.ToString(selected.Class);
+
+            ShipUsers.Clear();
+
+            var usersWithShips = Common.LoadData<Ship>(GetCalls.IndividualShip,selected.Id);
+
+            foreach (var user in usersWithShips.Users)
+            {
+                ShipUsers.AppendText(user.UserName + " ,");
+            }
         }
 
         private void OrgDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,8 +77,7 @@ namespace windowsDesktopClient
             OrgDomain.Text = Convert.ToString(selected.Domain);
             try
             {
-                string jsonUserRaw = Common.LoadData(GetCalls.IndividualUser, selected.Admin_User_Id);
-                User adminUser = JsonConvert.DeserializeObject<User>(jsonUserRaw);
+                User adminUser = Common.LoadData<User>(GetCalls.IndividualUser, selected.Admin_User_Id);
                 OrgAdminUser.Text = adminUser.UserName;
             }
             catch (WebException)

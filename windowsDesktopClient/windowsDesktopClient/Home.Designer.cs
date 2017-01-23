@@ -66,6 +66,7 @@
             this.OrgDropDown = new System.Windows.Forms.ComboBox();
             this.pricePage = new System.Windows.Forms.TabPage();
             this.userPage = new System.Windows.Forms.TabPage();
+            this.ShipUsers = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.shipPage.SuspendLayout();
             this.orgPage.SuspendLayout();
@@ -95,6 +96,7 @@
             // 
             // shipPage
             // 
+            this.shipPage.Controls.Add(this.ShipUsers);
             this.shipPage.Controls.Add(this.label9);
             this.shipPage.Controls.Add(this.ShipClass);
             this.shipPage.Controls.Add(this.ShipPowerCount);
@@ -423,6 +425,13 @@
             this.userPage.Text = "Users";
             this.userPage.UseVisualStyleBackColor = true;
             // 
+            // ShipUsers
+            // 
+            this.ShipUsers.Location = new System.Drawing.Point(17, 186);
+            this.ShipUsers.Name = "ShipUsers";
+            this.ShipUsers.Size = new System.Drawing.Size(500, 20);
+            this.ShipUsers.TabIndex = 21;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,6 +490,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox OrgAdminUser;
         private System.Windows.Forms.TabPage userPage;
+        private System.Windows.Forms.TextBox ShipUsers;
     }
 }
 

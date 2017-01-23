@@ -12,26 +12,33 @@ namespace DataDelivery
     internal class Common
     {
         /// <summary>
-        /// Makes the data request to the API for a list of items
-        /// </summary>
-        /// <param name="requestEnum">Enum data type that tells what kind of request is needed</param>
-        /// <returns>JSON string for a list of items</returns>
-        internal static string LoadData(GetCalls requestEnum)
-        {
-            string requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum);
-            return LoadGetRequest(requestString);
-        }
-
-        /// <summary>
         /// Makes the data request to the API for a single item
         /// </summary>
         /// <param name="requestEnum">Enum data type that tells what kind of request is needed</param>
         /// <param name="id">Id for the specific item that is required</param>
         /// <returns>JSON string for the single item</returns>
-        internal static string LoadData(GetCalls requestEnum, int id)
+        internal static T LoadData<T>(GetCalls requestEnum, int? id = null)
         {
-            string requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum, id);
-            return LoadGetRequest(requestString);
+            string requestString;
+
+            if (id.HasValue)
+            {
+                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum, (int)id);
+            }
+            else
+            {
+                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum);
+            }
+
+            string jsonData =  LoadGetRequest(requestString);
+
+            return FromJson<T>(jsonData);
+        }
+
+        public static T FromJson<T>(string jsonData)
+        {
+            T deserilisedObject = JsonConvert.DeserializeObject<T>(jsonData);
+            return deserilisedObject;
         }
 
         /// <summary>
