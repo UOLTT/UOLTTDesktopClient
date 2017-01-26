@@ -11,33 +11,18 @@ namespace DataDelivery
 {
     internal class Common
     {
+
+        #region Priave Methods
+
         /// <summary>
-        /// Makes the data request to the API for a single item
+        /// Takes the JSON string and deserializes it into the passed in object type
         /// </summary>
-        /// <param name="requestEnum">Enum data type that tells what kind of request is needed</param>
-        /// <param name="id">Id for the specific item that is required</param>
-        /// <returns>JSON string for the single item</returns>
-        internal static T LoadData<T>(GetCalls requestEnum, int? id = null)
+        /// <typeparam name="ReturnType">The object for the JSON to be deserialized into</typeparam>
+        /// <param name="jsonData">The Json String retrieved from the <see cref="LoadGetRequest(string)"/> method</param>
+        /// <returns></returns>
+        private static ReturnType FromJson<ReturnType>(string jsonData)
         {
-            string requestString;
-
-            if (id.HasValue)
-            {
-                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum, (int)id);
-            }
-            else
-            {
-                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum);
-            }
-
-            string jsonData =  LoadGetRequest(requestString);
-
-            return FromJson<T>(jsonData);
-        }
-
-        public static T FromJson<T>(string jsonData)
-        {
-            T deserilisedObject = JsonConvert.DeserializeObject<T>(jsonData);
+            ReturnType deserilisedObject = JsonConvert.DeserializeObject<ReturnType>(jsonData);
             return deserilisedObject;
         }
 
@@ -77,6 +62,34 @@ namespace DataDelivery
                 throw;
             }
         }
+        #endregion
+
+        #region Internally Exposed Methods
+        /// <summary>
+        /// Makes the data request to the API for a single item
+        /// </summary>
+        /// <param name="requestEnum">Enum data type that tells what kind of request is needed</param>
+        /// <param name="id">Id for the specific item that is required</param>
+        /// <returns>JSON string for the single item</returns>
+        internal static T LoadData<T>(GetCalls requestEnum, int? id = null)
+        {
+            string requestString;
+
+            if (id.HasValue)
+            {
+                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum, (int)id);
+            }
+            else
+            {
+                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum);
+            }
+
+            string jsonData =  LoadGetRequest(requestString);
+
+            return FromJson<T>(jsonData);
+        }
+
+        #endregion
 
     }
 }
