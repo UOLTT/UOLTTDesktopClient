@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
-using DataDelivery.Classes;
 
 namespace DataDelivery
 {
@@ -53,9 +51,9 @@ namespace DataDelivery
                     // log errorText
                 }
 
-                string messageBoxText = "There Was an Error";
-                string caption = "UOLTT Desktop Application";
-                MessageBoxButtons button = MessageBoxButtons.OK;
+                const string messageBoxText = "There Was an Error";
+                const string caption = "UOLTT Desktop Application";
+                const MessageBoxButtons button = MessageBoxButtons.OK;
 
                 MessageBox.Show(messageBoxText, caption, button);
 
@@ -65,6 +63,7 @@ namespace DataDelivery
         #endregion
 
         #region Internally Exposed Methods
+
         /// <summary>
         /// Makes the data request to the API for a single item
         /// </summary>
@@ -73,16 +72,7 @@ namespace DataDelivery
         /// <returns>JSON string for the single item</returns>
         internal static T LoadData<T>(GetCalls requestEnum, int? id = null)
         {
-            string requestString;
-
-            if (id.HasValue)
-            {
-                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum, (int)id);
-            }
-            else
-            {
-                requestString = GetDataRequests.RetrieveGetStringRequest(requestEnum);
-            }
+            string requestString = id.HasValue ? GetDataRequests.RetrieveGetStringRequest(requestEnum, (int)id) : GetDataRequests.RetrieveGetStringRequest(requestEnum);
 
             string jsonData =  LoadGetRequest(requestString);
 

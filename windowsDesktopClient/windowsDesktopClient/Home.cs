@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net;
-using System.Text;
 using System.Windows.Forms;
 using DataDelivery.Classes;
 using DataDelivery;
+// ReSharper disable ConvertToAutoProperty
 
 namespace windowsDesktopClient
 {
@@ -22,21 +20,21 @@ namespace windowsDesktopClient
         protected void PopulateLists()
         {
 
-            Global.listOfShips = Common.LoadData<List<Ship>>(GetCalls.ListOfShips);
-            foreach (var item in Global.listOfShips)
+            Global.ListOfShips = Common.LoadData<List<Ship>>(GetCalls.ListOfShips);
+            foreach (var item in Global.ListOfShips)
             {
                 ShipDropDown.Items.Add(item);
             }
             ShipDropDown.DisplayMember = "ShipName";
 
-            Global.listOfOrgs = Common.LoadData<List<Organization>>(GetCalls.ListOfOrgs);
-            foreach (var item in Global.listOfOrgs)
+            Global.ListOfOrgs = Common.LoadData<List<Organization>>(GetCalls.ListOfOrgs);
+            foreach (var item in Global.ListOfOrgs)
             {
                 OrgDropDown.Items.Add(item);
             }
             OrgDropDown.DisplayMember = "Name";
 
-            Global.listOfUsers = Common.LoadData<List<User>>(GetCalls.ListOfUsers);
+            Global.ListOfUsers = Common.LoadData<List<User>>(GetCalls.ListOfUsers);
         }
 
         private void ShipButton_Click(object sender, EventArgs e)
@@ -82,9 +80,9 @@ namespace windowsDesktopClient
             }
             catch (WebException)
             {
-                string messageBoxText = "Error fetching data from database";
-                string caption = "UOLTT Desktop Application";
-                MessageBoxButtons button = MessageBoxButtons.RetryCancel;
+                const string messageBoxText = "Error fetching data from database";
+                const string caption = "UOLTT Desktop Application";
+                const MessageBoxButtons button = MessageBoxButtons.RetryCancel;
 
                 MessageBox.Show(messageBoxText, caption, button);
             }
@@ -100,19 +98,19 @@ namespace windowsDesktopClient
         private static List<Organization> _listOfOrgs = new List<Organization>();
         private static List<User> _listOfUsers = new List<User>();
 
-        internal static List<Ship> listOfShips
+        internal static List<Ship> ListOfShips
         {
             get { return _listOfShips; }
             set { _listOfShips = value; }
         }
 
-        internal static List<Organization> listOfOrgs
+        internal static List<Organization> ListOfOrgs
         {
             get { return _listOfOrgs; }
             set { _listOfOrgs = value; }
         }
 
-        internal static List<User> listOfUsers
+        internal static List<User> ListOfUsers
         {
             get { return _listOfUsers; }
             set { _listOfUsers = value; }

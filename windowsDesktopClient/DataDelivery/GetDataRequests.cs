@@ -23,14 +23,12 @@ namespace DataDelivery
                 case GetCalls.ListOfUsers:
                     getString = "http://api.uoltt.org/api/v4/users";
                     break;
-                default:
-                    break;
             }
             return getString;
         }
 
         /// <summary>
-        /// Overload of <see cref="RetrieveGETStringRequest(GetCalls)"/> that takes an Id to call invididual items
+        /// Overload of <see cref="RetrieveGetStringRequest(GetCalls)"/> that takes an Id to call invididual items
         /// rather than a full list of items
         /// </summary>
         /// <param name="requestEnum">Enum value passed in to identify the request that is needed</param>

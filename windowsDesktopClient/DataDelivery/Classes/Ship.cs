@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+// ReSharper disable ConvertToAutoProperty
 
 namespace DataDelivery.Classes
 {
@@ -11,29 +8,155 @@ namespace DataDelivery.Classes
     /// </summary>
     internal class Ship
     {
-        public int Id { get; set; }
-        public string ShipName { get; set; }
-        public int? Length { get; set; }
-        public int? Beam { get; set; }
-        public int? Height { get; set; }
-        public int? NullMass { get; set; }
-        public int? CargoCapacity { get; set; }
-        public int? Crew { get; set; }
-        public int? PowerPlant { get; set; }
-        public int? PowerCount { get; set; }
-        public int? Primary { get; set; }
-        public int? PCount { get; set; }
-        public int? Maneuvering { get; set; }
-        public int? ManCount { get; set; }
-        public int? Shield { get; set; }
-        public int? ShieldCount { get; set; }
-        public string RaceEnabled { get; set; }
-        public int? Price { get; set; }
-        public string Class { get; set; }
-        public int? CombatSpeed { get; set; }
-        public int? CombatRating { get; set; }
-        public int? WaveRank { get; set; }
-        public List<Stations> Stations { get; set; }
-        public List<User> Users { get; set; }
+
+        #region Private Intenal Storage
+
+        private int _id;
+        private string _shipName;
+        private int? _length;
+        private int? _beam;
+        private int? _height;
+        private int? _nullMass;
+        private int? _cargoCapacity;
+        private int? _crew;
+        private int? _powerPlant;
+        private int? _powerCount;
+        private int? _primary;
+        private int? _pCount;
+        private int? _manouvering;
+        private int? _manCount;
+        private int? _shield;
+        private int? _shieldCount;
+        private string _raceEnabled;
+        private int? _price;
+        private string _class;
+        private int? _combatSpeed;
+        private int? _combatRating;
+        private int? _waveRank;
+        private List<Stations> _stations;
+        private List<User> _users;
+
+        #endregion
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+        public string ShipName
+        {
+            get { return _shipName; }
+            set { _shipName = value; }
+        }
+        public int? Length
+        {
+            get { return _length; }
+            set { _length = value; }
+        }
+        public int? Beam
+        {
+            get { return _beam; }
+            set { _beam = value; }
+        }
+        public int? Height
+        {
+            get { return _height; }
+            set { _height = value; }
+        }
+        public int? NullMass
+        {
+            get { return _nullMass; }
+            set { _nullMass = value; }
+        }
+        public int? CargoCapacity
+        {
+            get { return _cargoCapacity; }
+            set { _cargoCapacity = value; }
+        }
+        public int? Crew
+        {
+            get { return _crew; }
+            set { _crew = value; }
+        }
+        public int? PowerPlant
+        {
+            get { return _powerPlant; }
+            set { _powerPlant = value; }
+        }
+        public int? PowerCount
+        {
+            get { return _powerCount; }
+            set { _powerCount = value; }
+        }
+        public int? Primary
+        {
+            get { return _primary; }
+            set { _primary = value; }
+        }
+        public int? PCount
+        {
+            get { return _pCount; }
+            set { _pCount = value; }
+        }
+        public int? Maneuvering
+        {
+            get { return _manouvering; }
+            set { _manouvering = value; }
+        }
+        public int? ManCount
+        {
+            get { return _manCount; }
+            set { _manCount = value; }
+        }
+        public int? Shield
+        {
+            get { return _shield; }
+            set { _shield = value; }
+        }
+        public int? ShieldCount
+        {
+            get { return _shieldCount; }
+            set { _shieldCount = value; }
+        }
+        public string RaceEnabled
+        {
+            get { return _raceEnabled; }
+            set { _raceEnabled = value; }
+        }
+        public int? Price
+        {
+            get { return _price; }
+            set { _price = value; }
+        }
+        public string Class
+        {
+            get { return _class; }
+            set { _class = value; }
+        }
+        public int? CombatSpeed
+        {
+            get { return _combatSpeed; }
+            set { _combatSpeed = value; }
+        }
+        public int? CombatRating
+        {
+            get { return _combatRating; }
+            set { _combatRating = value; }
+        }
+        public int? WaveRank
+        {
+            get { return _waveRank; }
+            set { _waveRank = value; }
+        }
+        public List<Stations> Stations
+        {
+            get { return _stations; }
+            set { _stations = value; }
+        }
+        public List<User> Users
+        {
+            get { return _users; }
+            set { _users = value; }
+        }
     }
 }
