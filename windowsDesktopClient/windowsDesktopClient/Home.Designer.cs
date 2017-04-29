@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.shipButton = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.shipPage = new System.Windows.Forms.TabPage();
+            this.ShipUsers = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.ShipClass = new System.Windows.Forms.TextBox();
             this.ShipPowerCount = new System.Windows.Forms.TextBox();
@@ -64,12 +66,23 @@
             this.OrgAdminUserId = new System.Windows.Forms.TextBox();
             this.OrgId = new System.Windows.Forms.TextBox();
             this.OrgDropDown = new System.Windows.Forms.ComboBox();
-            this.pricePage = new System.Windows.Forms.TabPage();
             this.userPage = new System.Windows.Forms.TabPage();
-            this.ShipUsers = new System.Windows.Forms.TextBox();
+            this.UsersShips = new System.Windows.Forms.ListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.UserOrganisation = new System.Windows.Forms.TextBox();
+            this.UserGameHandle = new System.Windows.Forms.TextBox();
+            this.UserName = new System.Windows.Forms.TextBox();
+            this.UserId = new System.Windows.Forms.TextBox();
+            this.UserDropDown = new System.Windows.Forms.ComboBox();
+            this.formationPage = new System.Windows.Forms.TabPage();
+            this.pricePage = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.shipPage.SuspendLayout();
             this.orgPage.SuspendLayout();
+            this.userPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // shipButton
@@ -86,16 +99,18 @@
             // 
             this.tabControl1.Controls.Add(this.shipPage);
             this.tabControl1.Controls.Add(this.orgPage);
-            this.tabControl1.Controls.Add(this.pricePage);
             this.tabControl1.Controls.Add(this.userPage);
+            this.tabControl1.Controls.Add(this.formationPage);
+            this.tabControl1.Controls.Add(this.pricePage);
             this.tabControl1.Location = new System.Drawing.Point(104, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(681, 463);
+            this.tabControl1.Size = new System.Drawing.Size(860, 611);
             this.tabControl1.TabIndex = 7;
             // 
             // shipPage
             // 
+            this.shipPage.BackColor = System.Drawing.Color.LightGray;
             this.shipPage.Controls.Add(this.ShipUsers);
             this.shipPage.Controls.Add(this.label9);
             this.shipPage.Controls.Add(this.ShipClass);
@@ -119,10 +134,17 @@
             this.shipPage.Location = new System.Drawing.Point(4, 22);
             this.shipPage.Name = "shipPage";
             this.shipPage.Padding = new System.Windows.Forms.Padding(3);
-            this.shipPage.Size = new System.Drawing.Size(673, 437);
+            this.shipPage.Size = new System.Drawing.Size(852, 585);
             this.shipPage.TabIndex = 0;
             this.shipPage.Text = "Ships";
-            this.shipPage.UseVisualStyleBackColor = true;
+            // 
+            // ShipUsers
+            // 
+            this.ShipUsers.FormattingEnabled = true;
+            this.ShipUsers.Location = new System.Drawing.Point(20, 153);
+            this.ShipUsers.Name = "ShipUsers";
+            this.ShipUsers.Size = new System.Drawing.Size(637, 264);
+            this.ShipUsers.TabIndex = 21;
             // 
             // label9
             // 
@@ -296,7 +318,7 @@
             this.orgPage.Location = new System.Drawing.Point(4, 22);
             this.orgPage.Name = "orgPage";
             this.orgPage.Padding = new System.Windows.Forms.Padding(3);
-            this.orgPage.Size = new System.Drawing.Size(673, 437);
+            this.orgPage.Size = new System.Drawing.Size(852, 585);
             this.orgPage.TabIndex = 1;
             this.orgPage.Text = "Organisations";
             this.orgPage.UseVisualStyleBackColor = true;
@@ -407,38 +429,134 @@
             this.OrgDropDown.TabIndex = 3;
             this.OrgDropDown.SelectedIndexChanged += new System.EventHandler(this.OrgDropDown_SelectedIndexChanged);
             // 
-            // pricePage
-            // 
-            this.pricePage.Location = new System.Drawing.Point(4, 22);
-            this.pricePage.Name = "pricePage";
-            this.pricePage.Size = new System.Drawing.Size(673, 437);
-            this.pricePage.TabIndex = 2;
-            this.pricePage.Text = "Prices";
-            this.pricePage.UseVisualStyleBackColor = true;
-            // 
             // userPage
             // 
+            this.userPage.Controls.Add(this.UsersShips);
+            this.userPage.Controls.Add(this.label17);
+            this.userPage.Controls.Add(this.label19);
+            this.userPage.Controls.Add(this.label20);
+            this.userPage.Controls.Add(this.label21);
+            this.userPage.Controls.Add(this.UserOrganisation);
+            this.userPage.Controls.Add(this.UserGameHandle);
+            this.userPage.Controls.Add(this.UserName);
+            this.userPage.Controls.Add(this.UserId);
+            this.userPage.Controls.Add(this.UserDropDown);
             this.userPage.Location = new System.Drawing.Point(4, 22);
             this.userPage.Name = "userPage";
-            this.userPage.Size = new System.Drawing.Size(673, 437);
+            this.userPage.Size = new System.Drawing.Size(852, 585);
             this.userPage.TabIndex = 3;
             this.userPage.Text = "Users";
             this.userPage.UseVisualStyleBackColor = true;
             // 
-            // ShipUsers
+            // UsersShips
             // 
-            this.ShipUsers.Location = new System.Drawing.Point(17, 186);
-            this.ShipUsers.Name = "ShipUsers";
-            this.ShipUsers.Size = new System.Drawing.Size(500, 20);
-            this.ShipUsers.TabIndex = 21;
+            this.UsersShips.FormattingEnabled = true;
+            this.UsersShips.Location = new System.Drawing.Point(17, 150);
+            this.UsersShips.Name = "UsersShips";
+            this.UsersShips.Size = new System.Drawing.Size(637, 264);
+            this.UsersShips.TabIndex = 35;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(230, 77);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(66, 13);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "Organisation";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(18, 77);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(72, 13);
+            this.label19.TabIndex = 30;
+            this.label19.Text = "Game Handle";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(121, 33);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(60, 13);
+            this.label20.TabIndex = 29;
+            this.label20.Text = "User Name";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(18, 35);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(18, 13);
+            this.label21.TabIndex = 28;
+            this.label21.Text = "ID";
+            // 
+            // UserOrganisation
+            // 
+            this.UserOrganisation.Location = new System.Drawing.Point(230, 93);
+            this.UserOrganisation.Name = "UserOrganisation";
+            this.UserOrganisation.Size = new System.Drawing.Size(100, 20);
+            this.UserOrganisation.TabIndex = 27;
+            // 
+            // UserGameHandle
+            // 
+            this.UserGameHandle.Location = new System.Drawing.Point(18, 93);
+            this.UserGameHandle.Name = "UserGameHandle";
+            this.UserGameHandle.Size = new System.Drawing.Size(187, 20);
+            this.UserGameHandle.TabIndex = 25;
+            // 
+            // UserName
+            // 
+            this.UserName.Location = new System.Drawing.Point(124, 54);
+            this.UserName.Name = "UserName";
+            this.UserName.Size = new System.Drawing.Size(206, 20);
+            this.UserName.TabIndex = 24;
+            // 
+            // UserId
+            // 
+            this.UserId.Location = new System.Drawing.Point(18, 54);
+            this.UserId.Name = "UserId";
+            this.UserId.Size = new System.Drawing.Size(100, 20);
+            this.UserId.TabIndex = 23;
+            // 
+            // UserDropDown
+            // 
+            this.UserDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.UserDropDown.FormattingEnabled = true;
+            this.UserDropDown.Location = new System.Drawing.Point(6, 6);
+            this.UserDropDown.Name = "UserDropDown";
+            this.UserDropDown.Size = new System.Drawing.Size(174, 21);
+            this.UserDropDown.TabIndex = 22;
+            this.UserDropDown.SelectedIndexChanged += new System.EventHandler(this.UserDropDown_SelectedIndexChanged);
+            // 
+            // formationPage
+            // 
+            this.formationPage.Location = new System.Drawing.Point(4, 22);
+            this.formationPage.Name = "formationPage";
+            this.formationPage.Size = new System.Drawing.Size(852, 585);
+            this.formationPage.TabIndex = 4;
+            this.formationPage.Text = "Formations";
+            this.formationPage.UseVisualStyleBackColor = true;
+            // 
+            // pricePage
+            // 
+            this.pricePage.Location = new System.Drawing.Point(4, 22);
+            this.pricePage.Name = "pricePage";
+            this.pricePage.Size = new System.Drawing.Size(852, 585);
+            this.pricePage.TabIndex = 2;
+            this.pricePage.Text = "Prices";
+            this.pricePage.UseVisualStyleBackColor = true;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 487);
+            this.BackColor = System.Drawing.Color.LightGray;
+            this.ClientSize = new System.Drawing.Size(976, 635);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.shipButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.Text = "UOLTT Desktop Client";
             this.tabControl1.ResumeLayout(false);
@@ -446,6 +564,8 @@
             this.shipPage.PerformLayout();
             this.orgPage.ResumeLayout(false);
             this.orgPage.PerformLayout();
+            this.userPage.ResumeLayout(false);
+            this.userPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -490,7 +610,18 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox OrgAdminUser;
         private System.Windows.Forms.TabPage userPage;
-        private System.Windows.Forms.TextBox ShipUsers;
+        private System.Windows.Forms.ListBox ShipUsers;
+        private System.Windows.Forms.ListBox UsersShips;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox UserOrganisation;
+        private System.Windows.Forms.TextBox UserGameHandle;
+        private System.Windows.Forms.TextBox UserName;
+        private System.Windows.Forms.TextBox UserId;
+        private System.Windows.Forms.ComboBox UserDropDown;
+        private System.Windows.Forms.TabPage formationPage;
     }
 }
 

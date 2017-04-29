@@ -28,92 +28,92 @@ namespace DataDelivery.Classes
         /// </summary>
         public int Id
         {
-            get { return _id; }
-            set { _id = value; }
+            get => _id;
+            set => _id = value;
         }
         public string Name
         {
-            get { return _name; }
-            set { _name = value; }
+            get => _name;
+            set => _name = value;
         }
         /// <summary>
         /// The User Name of the selected User, created from uoltt.org
         /// </summary>
         public string UserName
         {
-            get { return _userName; }
-            set { _userName = value; }
+            get => _userName;
+            set => _userName = value;
         }
         /// <summary>
         /// The Users in game User Name
         /// </summary>
         public string Game_Handle
         {
-            get { return _gameHandle; }
-            set { _gameHandle = value; }
+            get => _gameHandle;
+            set => _gameHandle = value;
         }
         /// <summary>
         /// The ID of the organisation this user is part of, a look up of the organisation can be done using this ID
         /// </summary>
         public int? Organization_Id
         {
-            get { return _organisationId; }
-            set { _organisationId = value; }
+            get => _organisationId;
+            set => _organisationId = value;
         }
         /// <summary>
         /// The ID of the fleet this user is part of, a look up of the fleet can be done using this ID
         /// </summary>
         public int? Fleet_Id
         {
-            get { return _fleedId; }
-            set { _fleedId = value; }
+            get => _fleedId;
+            set => _fleedId = value;
         }
         /// <summary>
         /// The ID of the squad this user is part of, a look up of the squad can be done using this ID
         /// </summary>
         public int? Squad_Id
         {
-            get { return _squadId; }
-            set { _squadId = value; }
+            get => _squadId;
+            set => _squadId = value;
         }
         public int? Station_Id
         {
-            get { return _stationId; }
-            set { _stationId = value; }
+            get => _stationId;
+            set => _stationId = value;
         }
         /// <summary>
         /// ID of the users active ship
         /// </summary>
         public int? Active_Ship
         { 
-            get { return _activeShip; }
-            set { _activeShip = value; }
+            get => _activeShip;
+            set => _activeShip = value;
         }
         /// <summary>
         /// Organization that the user is part of, this has reduced information over the full Organization data
         /// </summary>
         public Organization Organization
         {
-            get { return _organization; }
-            set { _organization = value; }
+            get => _organization;
+            set => _organization = value;
         }
         public string Fleet
         {
-            get { return _fleet; }
-            set { _fleet = value; }
+            get => _fleet;
+            set => _fleet = value;
         }
         public string Squad
         {
-            get { return _squad; }
-            set { _squad = value; }
+            get => _squad;
+            set => _squad = value;
         }
         /// <summary>
         /// List of ships that the user owns on their SC account
         /// </summary>
         public List<Ship> Ships
         {
-            get { return _ships; }
-            set { _ships = value; }
+            get => _ships;
+            set => _ships = value;
         }
     }
 }

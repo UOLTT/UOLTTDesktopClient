@@ -4,8 +4,28 @@ namespace DataDelivery.Classes
 {
     internal class Stations
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        #region Private Internal Storage
+
+        private int _id;
+        private string _name;
+        private string _description;
+
+        #endregion
+
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
+        public string Description
+        {
+            get => _description;
+            set => _description = value;
+        }
     }
 }

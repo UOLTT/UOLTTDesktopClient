@@ -10,13 +10,13 @@ namespace windowsDesktopClient
 {
     public partial class Home : Form
     {
-        
+
         public Home()
         {
             InitializeComponent();
             PopulateLists();
         }
-        
+
         protected void PopulateLists()
         {
 
@@ -35,6 +35,12 @@ namespace windowsDesktopClient
             OrgDropDown.DisplayMember = "Name";
 
             Global.ListOfUsers = Common.LoadData<List<User>>(GetCalls.ListOfUsers);
+            foreach (var item in Global.ListOfUsers)
+            {
+                UserDropDown.Items.Add(item);
+            }
+            UserDropDown.DisplayMember = "UserName";
+            UserDropDown.Sorted = true;
         }
 
         private void ShipButton_Click(object sender, EventArgs e)
@@ -55,13 +61,13 @@ namespace windowsDesktopClient
             ShipPowerCount.Text = Convert.ToString(selected.PowerCount);
             ShipClass.Text = Convert.ToString(selected.Class);
 
-            ShipUsers.Clear();
+            ShipUsers.Items.Clear();
 
-            var usersWithShips = Common.LoadData<Ship>(GetCalls.IndividualShip,selected.Id);
+            var ShipsWithUsers = Common.LoadData<Ship>(GetCalls.IndividualShip, selected.Id);
 
-            foreach (var user in usersWithShips.Users)
+            foreach (var user in ShipsWithUsers.Users)
             {
-                ShipUsers.AppendText(user.UserName + " ,");
+                ShipUsers.Items.Add(user.UserName);
             }
         }
 
@@ -87,33 +93,58 @@ namespace windowsDesktopClient
                 MessageBox.Show(messageBoxText, caption, button);
             }
         }
-    }
 
-    /// <summary>
-    /// Internally shared variables able to be populated elsewhere
-    /// </summary>
-    internal static class Global
-    {
-        private static List<Ship> _listOfShips = new List<Ship>();
-        private static List<Organization> _listOfOrgs = new List<Organization>();
-        private static List<User> _listOfUsers = new List<User>();
-
-        internal static List<Ship> ListOfShips
+        private void UserDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            get { return _listOfShips; }
-            set { _listOfShips = value; }
+            try
+            {
+                User selected = (User)UserDropDown.SelectedItem;
+
+                UserId.Text = Convert.ToString(selected.Id);
+                UserName.Text = Convert.ToString(selected.UserName);
+                UserGameHandle.Text = Convert.ToString(selected.Game_Handle);
+                UserOrganisation.Text = Convert.ToString(selected.Organization_Id);
+
+                var usersWithShips = Common.LoadData<User>(GetCalls.IndividualUser, selected.Id);
+
+                UsersShips.Items.Clear();
+
+                foreach (var ship in usersWithShips.Ships)
+                {
+                    UsersShips.Items.Add(ship.ShipName);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
-        internal static List<Organization> ListOfOrgs
+        /// <summary>
+        /// Internally shared variables able to be populated elsewhere
+        /// </summary>
+        internal static class Global
         {
-            get { return _listOfOrgs; }
-            set { _listOfOrgs = value; }
-        }
+            private static List<Ship> _listOfShips = new List<Ship>();
+            private static List<Organization> _listOfOrgs = new List<Organization>();
+            private static List<User> _listOfUsers = new List<User>();
 
-        internal static List<User> ListOfUsers
-        {
-            get { return _listOfUsers; }
-            set { _listOfUsers = value; }
+            internal static List<Ship> ListOfShips
+            {
+                get => _listOfShips;
+                set => _listOfShips = value;
+            }
+
+            internal static List<Organization> ListOfOrgs
+            {
+                get => _listOfOrgs;
+                set => _listOfOrgs = value;
+            }
+
+            internal static List<User> ListOfUsers
+            {
+                get => _listOfUsers;
+                set => _listOfUsers = value;
+            }
         }
     }
 }

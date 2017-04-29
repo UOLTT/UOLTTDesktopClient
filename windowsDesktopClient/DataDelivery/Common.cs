@@ -15,12 +15,12 @@ namespace DataDelivery
         /// <summary>
         /// Takes the JSON string and deserializes it into the passed in object type
         /// </summary>
-        /// <typeparam name="ReturnType">The object for the JSON to be deserialized into</typeparam>
+        /// <typeparam name="TJsonObject">The object for the JSON to be deserialized into</typeparam>
         /// <param name="jsonData">The Json String retrieved from the <see cref="LoadGetRequest(string)"/> method</param>
         /// <returns></returns>
-        private static ReturnType FromJson<ReturnType>(string jsonData)
+        private static TJsonObject FromJson<TJsonObject>(string jsonData)
         {
-            ReturnType deserilisedObject = JsonConvert.DeserializeObject<ReturnType>(jsonData);
+            TJsonObject deserilisedObject = JsonConvert.DeserializeObject<TJsonObject>(jsonData);
             return deserilisedObject;
         }
 

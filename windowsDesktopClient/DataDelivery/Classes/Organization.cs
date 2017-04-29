@@ -23,58 +23,58 @@ namespace DataDelivery.Classes
 
         public int Id
         {
-            get { return _id; }
-            set { _id = value; }
+            get => _id;
+            set => _id = value;
         }
         public string Name
         {
-            get { return _name; }
-            set { _name = value; }
+            get => _name;
+            set => _name = value;
         }
         public string Domain
         {
-            get { return _domain; }
-            set { _domain = value; }
+            get => _domain;
+            set => _domain = value;
         }
         public int Admin_User_Id
         {
-            get { return _adminUserId; }
-            set { _adminUserId = value; }
+            get => _adminUserId;
+            set => _adminUserId = value;
         }
         public int Status_Id
         {
-            get { return _statusId; }
-            set { _statusId = value; }
+            get => _statusId;
+            set => _statusId = value;
         }
         public string Manifesto
         {
-            get { return _manifesto; }
-            set { _manifesto = value; }
+            get => _manifesto;
+            set => _manifesto = value;
         }
         public string Created_At
         {
-            get { return _createdAt; }
-            set { _createdAt = value; }
+            get => _createdAt;
+            set => _createdAt = value;
         }
         public string Updated_At
         {
-            get { return _updatedAt; }
-            set { _updatedAt = value; }
+            get => _updatedAt;
+            set => _updatedAt = value;
         }
         public int Fleet_Count
         {
-            get { return _fleedCount; }
-            set { _fleedCount = value; }
+            get => _fleedCount;
+            set => _fleedCount = value;
         }
         public int User_Count
         {
-            get { return _userCount; }
-            set { _userCount = value; }
+            get => _userCount;
+            set => _userCount = value;
         }
         public int Squad_Count
         {
-            get { return _squadCount; }
-            set { _squadCount = value; }
+            get => _squadCount;
+            set => _squadCount = value;
         }
     }
 }
